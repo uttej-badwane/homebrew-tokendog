@@ -5,13 +5,13 @@
 class Tokendog < Formula
   desc "Token-optimized CLI proxy for AI coding assistants — saves 60-90% of tokens on common dev operations"
   homepage "https://github.com/uttej-badwane/TokenDog"
-  version "0.1.5"
+  version "0.2.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.1.5/TokenDog_darwin_amd64.tar.gz"
-      sha256 "269b3dd0de855ed53511019317592c0deab68e828232763a17b91ac73d72f713"
+      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.2.0/TokenDog_darwin_amd64.tar.gz"
+      sha256 "841d8302596427afb042bbc0e5aa44d150c20dffe0472530ab5ac8355bea4987"
 
       define_method(:install) do
         bin.install "td"
@@ -20,8 +20,8 @@ class Tokendog < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.1.5/TokenDog_darwin_arm64.tar.gz"
-      sha256 "a701ed3c070eefe52e571d39183f4c92f79547043d1ea4d9803264fd7868a219"
+      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.2.0/TokenDog_darwin_arm64.tar.gz"
+      sha256 "30b4c0cdd038e6142558d6dcf7285cd3795a2a475d58fbf953409b8f2ce9d552"
 
       define_method(:install) do
         bin.install "td"
@@ -33,8 +33,8 @@ class Tokendog < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.1.5/TokenDog_linux_amd64.tar.gz"
-      sha256 "553ce38f5737ae0f13e165f4bfc1cdc794071426fc7f03ecbd864b1c9cea877b"
+      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.2.0/TokenDog_linux_amd64.tar.gz"
+      sha256 "00743eb53606c69cc6b1972f3d5065fe213b754f03a128e77f74e94c8f80fdb0"
       define_method(:install) do
         bin.install "td"
         bin.install_symlink "td" => "tokendog"
@@ -42,14 +42,61 @@ class Tokendog < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.1.5/TokenDog_linux_arm64.tar.gz"
-      sha256 "99a57e452e71356c964e4b8a22588242048e9efca78c29c87c06b6e694f77086"
+      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.2.0/TokenDog_linux_arm64.tar.gz"
+      sha256 "da1f1639868c522174f9acefe84e631573961b923732c7c987b8fdc6f2eec9b5"
       define_method(:install) do
         bin.install "td"
         bin.install_symlink "td" => "tokendog"
         generate_completions_from_executable(bin/"td", "completion")
       end
     end
+  end
+
+  def caveats
+    <<~EOS
+      .---""""---.
+                  .'   /\   /\  '.
+                 /    /  \-/  \   \
+                |    |  o   o  |   |
+                |     \   ▼   /    |
+                |      '.___.'     |
+                 \    /|     |\   /
+                  '. / |\ / /| \.'
+                    \  | V V |  /
+                     '-+-----+-'
+                      T O K E N D O G
+
+         Token-optimized CLI proxy for AI coding assistants
+         ───────────────────────────────────────────────────
+
+         Quick start:
+           1. Add hooks to ~/.claude/settings.json:
+
+              "hooks": {
+                "PreToolUse": [{"matcher":"Bash","hooks":[{
+                  "type":"command","command":"td hook claude"
+                }]}],
+                "PostToolUse": [
+                  {"matcher":"WebFetch","hooks":[{
+                    "type":"command","command":"td pipe webfetch"
+                  }]},
+                  {"matcher":"Glob","hooks":[{
+                    "type":"command","command":"td pipe glob"
+                  }]},
+                  {"matcher":"Grep","hooks":[{
+                    "type":"command","command":"td pipe grep"
+                  }]},
+                  {"matcher":"WebSearch","hooks":[{
+                    "type":"command","command":"td pipe websearch"
+                  }]}
+                ]
+              }
+
+           2. View savings:    td gain
+           3. Full history:    td gain --history
+
+         Docs: https://github.com/uttej-badwane/TokenDog
+    EOS
   end
 
   test do
