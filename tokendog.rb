@@ -5,13 +5,13 @@
 class Tokendog < Formula
   desc "Token-optimized CLI proxy for AI coding assistants — saves 60-90% of tokens on common dev operations"
   homepage "https://github.com/uttej-badwane/TokenDog"
-  version "0.2.1"
+  version "0.3.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.2.1/TokenDog_darwin_amd64.tar.gz"
-      sha256 "13c33e883f6d4a5aa7bdead2cd50ebb13ad3b6697becc02958fed3d4fc5a40bf"
+      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.3.0/TokenDog_darwin_amd64.tar.gz"
+      sha256 "2a7775d2d76176337729ae65b3fccf445a3a72b9439bce673138ec9edd15196f"
 
       define_method(:install) do
         bin.install "td"
@@ -20,8 +20,8 @@ class Tokendog < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.2.1/TokenDog_darwin_arm64.tar.gz"
-      sha256 "dcacb26a43de32410434006a7a800223cfb88a0e787c762b9bb7e82b18fa0c93"
+      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.3.0/TokenDog_darwin_arm64.tar.gz"
+      sha256 "802f07010030397a389c599d5c4202c87c8fa4a8279ea6085f3c4b0df341742f"
 
       define_method(:install) do
         bin.install "td"
@@ -33,8 +33,8 @@ class Tokendog < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.2.1/TokenDog_linux_amd64.tar.gz"
-      sha256 "b716d3bd16c3cea0e9242580f50458a9fdae4a32207b38ec1fab7a055fe4c35f"
+      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.3.0/TokenDog_linux_amd64.tar.gz"
+      sha256 "5d71a1dd60852474e9cfeb4a1f653d922cba2d384c94b4239ca9963fd2efe1c9"
       define_method(:install) do
         bin.install "td"
         bin.install_symlink "td" => "tokendog"
@@ -42,8 +42,8 @@ class Tokendog < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.2.1/TokenDog_linux_arm64.tar.gz"
-      sha256 "33758fcd33a4b71557bb424432b12897e2bcf02d82518bba6d1ed1ad4e3e8054"
+      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.3.0/TokenDog_linux_arm64.tar.gz"
+      sha256 "4e407859dc882ee7fe4f04bb573b4431e498610e0271411a01fc2dee09c4770d"
       define_method(:install) do
         bin.install "td"
         bin.install_symlink "td" => "tokendog"
@@ -54,9 +54,18 @@ class Tokendog < Formula
 
   def caveats
     <<~EOS
-      TokenDog installed.
+      ████████╗ ██████╗ ██╗  ██╗███████╗███╗   ██╗██████╗  ██████╗  ██████╗
+      ╚══██╔══╝██╔═══██╗██║ ██╔╝██╔════╝████╗  ██║██╔══██╗██╔═══██╗██╔════╝
+         ██║   ██║   ██║█████╔╝ █████╗  ██╔██╗ ██║██║  ██║██║   ██║██║  ███╗
+         ██║   ██║   ██║██╔═██╗ ██╔══╝  ██║╚██╗██║██║  ██║██║   ██║██║   ██║
+         ██║   ╚██████╔╝██║  ██╗███████╗██║ ╚████║██████╔╝╚██████╔╝╚██████╔╝
+         ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═════╝  ╚═════╝  ╚═════╝
 
-      Run  td welcome  to see setup status and a quick-start guide.
+      Token-optimized CLI proxy for AI coding assistants
+
+      Run  td welcome   to see setup status and quick-start guide
+      Run  td discover  to find unrewritten commands in your history
+      Run  td gain      to see your current token savings
     EOS
   end
 
