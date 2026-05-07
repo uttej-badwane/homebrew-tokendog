@@ -5,13 +5,13 @@
 class Tokendog < Formula
   desc "Token-optimized CLI proxy for AI coding assistants — saves 60-90% of tokens on common dev operations"
   homepage "https://github.com/uttej-badwane/TokenDog"
-  version "0.10.0"
+  version "0.10.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.10.0/TokenDog_darwin_amd64.tar.gz"
-      sha256 "b6331c75e0c2b193391875a1f9206dac28570422ce280478301f5c66aaba674c"
+      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.10.1/TokenDog_darwin_amd64.tar.gz"
+      sha256 "37ef262d6eac738523b597ae3e6956a16348e31a9d4671991b7b64445ea7e788"
 
       define_method(:install) do
         bin.install "td"
@@ -20,8 +20,8 @@ class Tokendog < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.10.0/TokenDog_darwin_arm64.tar.gz"
-      sha256 "f51139154af7f439f376211fc8d79436ee95dfd9b3342479c9ac010bad34e360"
+      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.10.1/TokenDog_darwin_arm64.tar.gz"
+      sha256 "798048b8ee839f312f976c6b2053d5afad09c45e62c5973636a621d62095f6f5"
 
       define_method(:install) do
         bin.install "td"
@@ -33,8 +33,8 @@ class Tokendog < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.10.0/TokenDog_linux_amd64.tar.gz"
-      sha256 "47ed6aba16594988639d2b832fd663ef05471dfc5add361c552403beca5aaa4f"
+      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.10.1/TokenDog_linux_amd64.tar.gz"
+      sha256 "f697ce42a6c7119f1698b5db72b7336950b940d073d8f126869e8a36678d8850"
       define_method(:install) do
         bin.install "td"
         bin.install_symlink "td" => "tokendog"
@@ -42,8 +42,8 @@ class Tokendog < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.10.0/TokenDog_linux_arm64.tar.gz"
-      sha256 "be1d9892ed4ebc0387d31b320c9f392d73d0af379162346b3fc6fb88b1fb883d"
+      url "https://github.com/uttej-badwane/TokenDog/releases/download/v0.10.1/TokenDog_linux_arm64.tar.gz"
+      sha256 "128e42ddaffb873ab7a4c6c7ef678cc1a2a84db8f7d96e2b9f33ccb10b6915e8"
       define_method(:install) do
         bin.install "td"
         bin.install_symlink "td" => "tokendog"
